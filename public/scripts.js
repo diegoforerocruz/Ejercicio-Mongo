@@ -1,5 +1,5 @@
 const ws = new WebSocket("ws://localhost:3000");
-const router = require("../routes/operaciones")
+
 
 ws.onmessage = (msg) => {
   renderMessages(JSON.parse(msg.data));
@@ -13,6 +13,7 @@ const renderMessages = (data) => {
 const handleSubmit = (evt) => {
   evt.preventDefault();
   const message = document.getElementById("message");
+  
   ws.send(message.value);
   message.value = "";
 };
